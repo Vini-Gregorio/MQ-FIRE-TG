@@ -1,18 +1,20 @@
 # Evidência da refatoração — 22/09/2026
 
-Este registro descreve verificações executadas, não certificação nem resultado de ensaio físico. A [CI da revisão de origem, commit c9a9bb2](https://github.com/Vini-Gregorio/SensorFumaca/actions/runs/35681701365), aprovou software e firmware, incluindo o caderno experimental. O novo `MQ-FIRE-TG` tem [CI própria](https://github.com/Vini-Gregorio/MQ-FIRE-TG/actions/workflows/ci.yml): conferir o SHA e a conclusão da execução correspondente. A importação não herda automaticamente a aprovação de outro commit.
+Este registro descreve verificações executadas, não certificação nem resultado de ensaio físico. A importação foi validada no próprio `MQ-FIRE-TG`: [execução 35707757501](https://github.com/Vini-Gregorio/MQ-FIRE-TG/actions/runs/35707757501), commit **`a7f09b55f0957824cc6bdc9c7de6e9555d1cd43b`**, jobs **software** e **firmware** concluídos com sucesso em 22/09/2026. A árvore publicada foi comparada à cópia preparada e corresponde integralmente aos 64 arquivos revisados.
+
+A [CI da revisão de origem, commit c9a9bb2](https://github.com/Vini-Gregorio/SensorFumaca/actions/runs/35681701365), fica como referência histórica. Para qualquer revisão posterior, conferir SHA e conclusão na [CI do MQ-FIRE-TG](https://github.com/Vini-Gregorio/MQ-FIRE-TG/actions/workflows/ci.yml); aprovação de um commit não se estende automaticamente ao seguinte.
 
 | Verificação | Resultado observado nesta execução |
 |---|---|
-| `npm test` | 26 testes aprovados localmente, 0 falhas, 0 pulados; inclui contrato experimental, proteção das novas rotas e conclusão explícita |
+| `npm test` | 26 testes aprovados localmente e na CI do commit a7f09b5, 0 falhas, 0 pulados; inclui contrato experimental, proteção das novas rotas e conclusão explícita |
 | `npm run test:firmware` | Núcleo C++11 compilado com `-Wall -Wextra -Werror`; assertions de alarme, debounce, rollover, canais independentes, prioridade, substituição e transbordamento da fila aprovadas |
 | `npm run check:secrets` | Árvore atual aprovada pelo verificador básico; não verifica histórico |
-| `npm audit --omit=dev` | 0 vulnerabilidades conhecidas após atualização do mysql2/lockfile; resultado pontual do registro npm |
+| `npm audit --omit=dev` | 0 vulnerabilidades conhecidas nos logs da CI da importação; resultado pontual do registro npm |
 | `git diff --check` | Sem erros de whitespace na verificação local |
 | `npm run test:integration` local | Não executado com banco: Docker/MariaDB não disponíveis; tentativa de instalação bloqueada por permissões. Sem flag, teste explicitamente pulado |
-| Integração MariaDB na CI | Revisão de origem aprovada: 3 testes de integração, upgrade até 003, início atômico de ensaios, captura de limites, observações retrospectivas, múltiplos dispositivos, isolamento e exportação conjunta. Verificar também a execução da main no novo destino |
-| Smoke Chromium | Revisão de origem aprovada: planejar/iniciar/anotar/concluir/exportar ensaio, autenticação/XSS/mobile/desktop e limpeza dos dados ao sair. Verificar também a execução da main no novo destino |
-| Compilação ESP32 PlatformIO | Revisão de origem aprovada com toolchain C++11; fila e diagnóstico compilados. Sem credenciais reais e sem gravação em hardware. Verificar também a execução da main no novo destino |
+| Integração MariaDB na CI | Aprovada no MQ-FIRE-TG: 3 testes, 0 falhas e 0 pulados. Upgrade 001 → 002 → 003 e repetição das migrações aprovados, incluindo ensaios, isolamento, limites e exportação conjunta |
+| Smoke Chromium | Aprovado no MQ-FIRE-TG: planejar/iniciar/anotar/concluir/exportar ensaio, autenticação/XSS/mobile/desktop e limpeza dos dados ao sair |
+| Compilação ESP32 PlatformIO | Aprovada no MQ-FIRE-TG com toolchain C++11; fila e diagnóstico compilados. Sem credenciais reais e sem gravação em hardware |
 | Carga k6 / hardware / Telegram real / campo | Não executados |
 | Revogação de segredos externos / limpeza do histórico | Não executadas; requerem responsável e coordenação |
 | Repositório independente | `Vini-Gregorio/MQ-FIRE-TG` público, criado em 22/09/2026; API confirmou `fork: false`. Arquivos revisados importados sem histórico antigo; créditos preservados. O fork anterior permanece intacto |
