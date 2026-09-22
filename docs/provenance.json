@@ -1,0 +1,21 @@
+{
+  "project": "MQ-FIRE-TG",
+  "repository": "https://github.com/Vini-Gregorio/MQ-FIRE-TG",
+  "createdOn": "2026-09-22",
+  "import": {
+    "sourceRepository": "https://github.com/Vini-Gregorio/SensorFumaca",
+    "sourceBranch": "refactor/tg-secure-foundation",
+    "sourceCommit": "c9a9bb21cbe9ef083af7a6b8a7e3a01bd18f5dc6",
+    "sourcePullRequest": "https://github.com/Vini-Gregorio/SensorFumaca/pull/7",
+    "sourceValidation": "https://github.com/Vini-Gregorio/SensorFumaca/actions/runs/35681701365",
+    "method": "tracked-file snapshot via git archive; documentation adapted after import",
+    "sourceHistoryImported": false
+  },
+  "credits": "AUTHORS.md",
+  "licenseStatus": "pending",
+  "notes": [
+    "The previous repository remains unchanged by this import.",
+    "External credential revocation is still required; a fresh Git history does not revoke credentials.",
+    "Software validation does not establish physical calibration or field performance."
+  ]
+}
